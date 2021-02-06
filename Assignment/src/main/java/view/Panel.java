@@ -42,7 +42,7 @@ public class Panel extends JPanel {
 
         ball.setFake_x(250);
         ball.setFake_y(250);
-        ball.setSpeed(1);
+        ball.setSpeed(100);
         ball.setInclination(1);
         ball.setDirectionFlag(true);
 
@@ -77,7 +77,7 @@ public class Panel extends JPanel {
         y_intercepts[2] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[2]) - inclinations[2] * (xPoints[2] - Frame.WIDTH / 2 + 250));
         y_intercepts[3] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[3]) - inclinations[3] * (xPoints[3] - Frame.WIDTH / 2 + 250));
 
-//        new SpeedAdjuster().start();
+        new SpeedAdjuster().start();
     }
 
     @Override
@@ -111,10 +111,22 @@ public class Panel extends JPanel {
         g.fillPolygon(new Polygon(xs, ys, 3));
 
         g.drawOval(speedometer.getX2() + 50, speedometer.getY2() - 30, 180, 180);
+        int degreeForRealSpeedometer = (gauge / 2f) >= 125.0 ? gauge / 2 - 125 : 235 + gauge / 2;
+        System.out.println(degreeForRealSpeedometer);
+        Point point = returnCirclePoint(new Point(speedometer.getX2() + 50 + 90, speedometer.getY2() - 30 + 90),
+                degreeForRealSpeedometer, 90);
+        g.drawLine(point.x, point.y, speedometer.getX2() + 50 + 90, speedometer.getY2() - 30 + 90);
+
+        g.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        g.drawString(gauge * 2 + "", speedometer.getX2() + 50 + 90 - 15, speedometer.getY2() - 30 + 150);
+
         g.setFont(new Font("Times New Roman", Font.ITALIC, 12));
+        g.setColor(new Color(225, 0, 0));
         g.drawString(1000 + "", speedometer.getX3() + 200, speedometer.getY3() + 50);
         g.setColor(new Color(225, 225, 0));
         g.drawString(10 + "", speedometer.getX3() + 50, speedometer.getY3() + 50);
+
+
 
         g.setColor(Color.WHITE);
 
@@ -122,6 +134,20 @@ public class Panel extends JPanel {
         g.setColor(Color.GREEN);
         g.fillOval(ball.get_x() - 10, ball.get_y() - 10, 20, 20);
         staticThings();
+    }
+
+    public Point returnCirclePoint(Point centerOfCircle, int direction, int radius) {
+        // 식: radius^2 = (x - centerOfCircle.getX)^2 + (y - centerOfCircle.getY)^2
+        if (direction < 90) {
+            direction = direction + 270;
+        } else {
+            direction = direction - 90;
+        }
+
+        int x = centerOfCircle.x + (int) Math.round(radius * Math.cos(direction / 57.2958));
+        int y = centerOfCircle.y + (int) Math.round(radius * Math.sin(direction / 57.2958));
+
+        return new Point(x, y);
     }
 
     private void frameRateAdjuster() {
