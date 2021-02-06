@@ -19,6 +19,7 @@ public class Ball {
     private double y_intercept = 0;
 
     // 가짜 x, y 의 위치
+    //안녕하세요 과연 이 브랜치는 무엇일까요?
     private int fake_x;
     private int fake_y;
 
