@@ -40,11 +40,10 @@ public class Panel extends JPanel {
         speedometer.setX3(Frame.WIDTH / 2 + 250);
         speedometer.setY3(Frame.HEIGHT / 2 - 260);
 
-
         ball.setFake_x(250);
         ball.setFake_y(250);
-        ball.setSpeed(100);
-        ball.setInclination(1f);
+        ball.setSpeed(1);
+        ball.setInclination(1);
         ball.setDirectionFlag(true);
 
         Random random = new Random();
@@ -68,7 +67,6 @@ public class Panel extends JPanel {
         xPoints[3] = Frame.WIDTH / 2 + 250;
         yPoints[3] = random.nextInt(400) + Frame.HEIGHT / 2 - 200;
 
-
         inclinations[0] = - (float) (yPoints[0] - yPoints[3]) / (xPoints[0] - xPoints[3]);
         inclinations[1] = - (float) (yPoints[0] - yPoints[1]) / (xPoints[0] - xPoints[1]);
         inclinations[2] = - (float) (yPoints[1] - yPoints[2]) / (xPoints[1] - xPoints[2]);
@@ -79,7 +77,7 @@ public class Panel extends JPanel {
         y_intercepts[2] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[2]) - inclinations[2] * (xPoints[2] - Frame.WIDTH / 2 + 250));
         y_intercepts[3] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[3]) - inclinations[3] * (xPoints[3] - Frame.WIDTH / 2 + 250));
 
-        new SpeedAdjuster().start();
+//        new SpeedAdjuster().start();
     }
 
     @Override
@@ -111,6 +109,12 @@ public class Panel extends JPanel {
         xs[2] = xs[1];
         ys[2] = Math.round((-9 / 50f) * gauge) + speedometer.getY2() + 90;
         g.fillPolygon(new Polygon(xs, ys, 3));
+
+        g.drawOval(speedometer.getX2() + 50, speedometer.getY2() - 30, 180, 180);
+        g.setFont(new Font("Times New Roman", Font.ITALIC, 12));
+        g.drawString(1000 + "", speedometer.getX3() + 200, speedometer.getY3() + 50);
+        g.setColor(new Color(225, 225, 0));
+        g.drawString(10 + "", speedometer.getX3() + 50, speedometer.getY3() + 50);
 
         g.setColor(Color.WHITE);
 
@@ -154,7 +158,6 @@ public class Panel extends JPanel {
                 }
             }
         }
-
         return false;
     }
 
@@ -257,8 +260,8 @@ public class Panel extends JPanel {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 } else {
-                    double a = getDegreeWithInclinationForWall(-1.0 / inclinations[0]) * 2;
-                    if (getInclinationWithDegree(a) < ball.getInclination()) {
+                    double at = getDegreeWithInclinationForWall(-1.0 / inclinations[0]) * 2;
+                    if (getInclinationWithDegree(at) < ball.getInclination()) {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 }
@@ -282,9 +285,9 @@ public class Panel extends JPanel {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 } else {
-                    double a = getDegreeWithInclinationForWall(-1.0 / inclinations[1]);
-                    a = a - (180 - a);
-                    if (getInclinationWithDegree(a) > ball.getInclination()) {
+                    double at = getDegreeWithInclinationForWall(-1.0 / inclinations[1]);
+                    at = at - (180 - at);
+                    if (getInclinationWithDegree(at) > ball.getInclination()) {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 }
@@ -308,8 +311,8 @@ public class Panel extends JPanel {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 } else {
-                    double a = getDegreeWithInclinationForWall(-1.0 / inclinations[2]) * 2;
-                    if ((getInclinationWithDegree(a) < ball.getInclination())) {
+                    double at = getDegreeWithInclinationForWall(-1.0 / inclinations[2]) * 2;
+                    if ((getInclinationWithDegree(at) < ball.getInclination())) {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 }
@@ -333,9 +336,9 @@ public class Panel extends JPanel {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 } else {
-                    double a = getDegreeWithInclinationForWall(-1.0 / inclinations[3]);
-                    a = a - (180 - a);
-                    if ((getInclinationWithDegree(a) > ball.getInclination())) {
+                    double at = getDegreeWithInclinationForWall(-1.0 / inclinations[3]);
+                    at = at - (180 - at);
+                    if ((getInclinationWithDegree(at) > ball.getInclination())) {
                         ball.setDirectionFlag(!ball.isDirectionFlag());
                     }
                 }

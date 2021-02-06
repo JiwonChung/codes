@@ -1,5 +1,5 @@
-Main.java
- Main
+model/PoolTable.java
+ model.PoolTable
 model/Ball.java
  model.Ball
 model/LinearFunction.java
@@ -10,8 +10,8 @@ model/JPoint.java
  model.JPoint
 view/Frame.java
  view.Frame
+Main.java
+ Main
 view/Panel.java
  view.Panel
  view.Panel$SpeedAdjuster
-model/PoolTable.java
- model.PoolTable

@@ -3,6 +3,7 @@ package model;
 public class LinearFunction {
     private double inclination;
     private double y_intercept;
+    private boolean direction;
 
     public LinearFunction() {
         this(0, 0);
@@ -23,6 +24,14 @@ public class LinearFunction {
 
     public double getY_intercept() {
         return y_intercept;
+    }
+
+    public boolean isDirection() {
+        return direction;
+    }
+
+    public void setDirection(boolean direction) {
+        this.direction = direction;
     }
 
     public void setY_intercept(double y_intercept) {
