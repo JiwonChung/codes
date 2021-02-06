@@ -4,6 +4,8 @@ import model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Panel extends JPanel {
@@ -29,9 +31,16 @@ public class Panel extends JPanel {
     2  3
      */
 
+    Map<Integer, Double> map = new HashMap<>();
+    int displayedSpeed = 10;
+
     // 생성자 입니다.
     public Panel() {
         setLayout(null);
+
+        for (int i = 10; i <= 1000; i+=10) {
+            map.put(i, (Math.log10(1000.0 / i) / Math.log10(2)) + 1);
+        }
 
         speedometer.setX1(Frame.WIDTH / 2 - 250);
         speedometer.setY1(Frame.HEIGHT / 2 - 260);
@@ -42,7 +51,7 @@ public class Panel extends JPanel {
 
         ball.setFake_x(250);
         ball.setFake_y(250);
-        ball.setSpeed(100);
+        ball.setSpeed(map.get(10));
         ball.setInclination(1);
         ball.setDirectionFlag(true);
 
@@ -92,14 +101,17 @@ public class Panel extends JPanel {
         g.drawString(ball.getFake_x() + "", Frame.WIDTH / 2, Frame.HEIGHT / 2 + 300);
         g.drawString(ball.getFake_y() + "", Frame.WIDTH / 2 - 400, Frame.HEIGHT / 2);
 
-        g.setColor(new Color(255, (int) Math.round(ball.getSpeed() * 2), 0));
+        // 게이지는 ball.speed 값(1 ~ 100)을 0~500 사이의 정수로 만드는 것입니다.
+        int gauge = displayedSpeed / 2;
+        g.drawString("Speed : " + gauge * 2 + " [cm/sec]", speedometer.getX1() - 200, speedometer.getY2());
+
+        g.setColor(new Color(255, 255 - gauge / 2, 0));
         g.drawLine(speedometer.getX1(), speedometer.getY1(), speedometer.getX2(), speedometer.getY2());
         g.drawLine(speedometer.getX2(), speedometer.getY2(), speedometer.getX3(), speedometer.getY3());
         g.drawLine(speedometer.getX3(), speedometer.getY3(), speedometer.getX1(), speedometer.getY1());
 
-        // 게이지는 ball.speed 값(1 ~ 100)을 0~500 사이의 정수로 만드는 것입니다.
-        int gauge = (int) (101 - Math.round(ball.getSpeed())) * 10 / 2;
-        g.drawString("Speed : " + gauge * 2 + " [cm/sec]", speedometer.getX1() - 200, speedometer.getY2());
+
+
         int[] xs = new int[3];
         int[] ys = new int[3];
         xs[0] = speedometer.getX1();
@@ -389,26 +401,31 @@ public class Panel extends JPanel {
             while (true) {
                 try {
                     Thread.sleep(5000);
-                    for (int i = 1000; i > 800; i--) {
-                        ball.setSpeed(i / 10f);
-                        Thread.sleep(3);
+                    for (int i = 10; i < 200; i += 10) {
+                        displayedSpeed = i;
+                        ball.setSpeed(map.get(i));
+                        Thread.sleep(30);
                     }
-                    for (int i = 800; i > 600; i--) {
-                        ball.setSpeed(i / 10f);
-                        Thread.sleep(5);
+                    for (int i = 200; i < 400; i += 10) {
+                        displayedSpeed = i;
+                        ball.setSpeed(map.get(i));
+                        Thread.sleep(50);
                     }
-                    for (int i = 600; i > 300; i--) {
-                        ball.setSpeed(i / 10f);
-                        Thread.sleep(10);
+                    for (int i = 400; i < 700; i += 10) {
+                        displayedSpeed = i;
+                        ball.setSpeed(map.get(i));
+                        Thread.sleep(100);
                     }
-                    for (int i = 300; i > 10; i--) {
-                        ball.setSpeed(i / 10f);
-                        Thread.sleep(20);
+                    for (int i = 700; i <= 1000; i += 10) {
+                        displayedSpeed = i;
+                        ball.setSpeed(map.get(i));
+                        Thread.sleep(200);
                     }
                     Thread.sleep(5000);
-                    for (int i = 10; i < 1010; i++) {
-                        ball.setSpeed(i / 10f);
-                        Thread.sleep(3);
+                    for (int i = 1000; i >= 10; i -= 10) {
+                        displayedSpeed = i;
+                        ball.setSpeed(map.get(i));
+                        Thread.sleep(50);
                     }
                 } catch (InterruptedException e) {}
             }
