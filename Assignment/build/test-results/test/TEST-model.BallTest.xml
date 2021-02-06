@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="model.BallTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-03T16:37:06" hostname="jwchung" time="0.022">
+  <properties/>
+  <testcase name="계산기()" classname="model.BallTest" time="0.022"/>
+  <system-out><![CDATA[15.10912909093
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
