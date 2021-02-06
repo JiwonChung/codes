@@ -112,7 +112,6 @@ public class Panel extends JPanel {
 
         g.drawOval(speedometer.getX2() + 50, speedometer.getY2() - 30, 180, 180);
         int degreeForRealSpeedometer = (gauge / 2f) >= 125.0 ? gauge / 2 - 125 : 235 + gauge / 2;
-        System.out.println(degreeForRealSpeedometer);
         Point point = returnCirclePoint(new Point(speedometer.getX2() + 50 + 90, speedometer.getY2() - 30 + 90),
                 degreeForRealSpeedometer, 90);
         g.drawLine(point.x, point.y, speedometer.getX2() + 50 + 90, speedometer.getY2() - 30 + 90);
