@@ -37,8 +37,8 @@ class PanelTest {
             Assertions.assertThat(detected(30)).isFalse();
         }
 //        System.out.println(detected(30));
-
     }
+
     private boolean detected(int direction) {
 
         Random random = new Random();

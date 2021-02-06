@@ -8,24 +8,6 @@ import java.util.Random;
 
 public class Panel extends JPanel {
 
-    // 텍스트 색상
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
-    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
-    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
-    public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
-    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
-    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
-    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
-    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
     // 계기판 1의 객체
     final private Speedometer speedometer = new Speedometer();
@@ -37,11 +19,6 @@ public class Panel extends JPanel {
     int[] yPoints = new int[4];
     double[] inclinations = new double[4];
     int[] y_intercepts = new int[4];
-
-    // setting speed : lower is fast
-    // 1 -> 1000, 10 -> 100, 100 -> 10
-    public static double speed = 100;
-
 
 
     // 박은 벽
@@ -66,7 +43,7 @@ public class Panel extends JPanel {
 
         ball.setFake_x(250);
         ball.setFake_y(250);
-        ball.setSpeed(speed);
+        ball.setSpeed(100);
         ball.setInclination(1f);
         ball.setDirectionFlag(true);
 
@@ -122,6 +99,7 @@ public class Panel extends JPanel {
         g.drawLine(speedometer.getX2(), speedometer.getY2(), speedometer.getX3(), speedometer.getY3());
         g.drawLine(speedometer.getX3(), speedometer.getY3(), speedometer.getX1(), speedometer.getY1());
 
+        // 게이지는 ball.speed 값(1 ~ 100)을 0~500 사이의 정수로 만드는 것입니다.
         int gauge = (int) (101 - Math.round(ball.getSpeed())) * 10 / 2;
         g.drawString("Speed : " + gauge * 2 + " [cm/sec]", speedometer.getX1() - 200, speedometer.getY2());
         int[] xs = new int[3];
@@ -132,7 +110,6 @@ public class Panel extends JPanel {
         ys[1] = speedometer.getY1();
         xs[2] = xs[1];
         ys[2] = Math.round((-9 / 50f) * gauge) + speedometer.getY2() + 90;
-
         g.fillPolygon(new Polygon(xs, ys, 3));
 
         g.setColor(Color.WHITE);
@@ -150,20 +127,6 @@ public class Panel extends JPanel {
         repaint();
     }
 
-    private int getDegreeWithInclination(double inclination) {
-        int degree = 90 - (int) Math.round(Math.atan(inclination) * 57.2958);
-        if (degree == 360) {
-            return 0;
-        }
-        if (ball.isDirectionFlag()) {
-            return degree;
-        } else {
-            if (degree + 180 == 360) {
-                return 0;
-            }
-            return degree + 180;
-        }
-    }
     private double getDegreeWithInclinationForWall(double inclination) {
         double degree = 90 - Math.round(Math.atan(inclination) * 57.2958);
         if (degree == 360) {
@@ -172,29 +135,11 @@ public class Panel extends JPanel {
         return degree;
 
     }
+
     private double getInclinationWithDegree(double degree) {
         return Math.tan((90 - degree) / 57.2958);
     }
 
-    private boolean detected(int direction) {
-        Point[] points = createDetectPoint(direction);
-        for (Point point : points) {
-            if (point.x * inclinations[1] + y_intercepts[1] <= point.y) {
-                wallNum = 1;
-                return true;
-            } else if (point.x * inclinations[2] + y_intercepts[2] >= point.y) {
-                wallNum = 2;
-                return true;
-            } else if (point.x * inclinations[0] + y_intercepts[0] <= point.y) {
-                wallNum = 0;
-                return true;
-            } else if (point.x * inclinations[3] + y_intercepts[3] >= point.y) {
-                wallNum = 3;
-                return true;
-            }
-        }
-        return false;
-    }
 
     private boolean detected() {
         for (int j = 0; j < 10; j++) {
@@ -213,46 +158,39 @@ public class Panel extends JPanel {
         return false;
     }
 
-    /**
-     * will return detect Point with degree
-     * the ball _x, _y are auto inject
-     * @param direction Enter degree
-     */
-    private Point[] createDetectPoint(int direction) {
-        int[] directions = new int[37];
-        int tmp = direction + 90;
-        Point[] returnValues = new Point[37];
-        for (int i = 0; i < directions.length; i++) {
-            directions[i] = tmp - 5 * i;
-            if (directions[i] < 0) {
-                directions[i] = 360 + directions[i];
-            } else if (directions[i] >= 360) {
-                directions[i] = directions[i] - 360;
-            }
-            returnValues[i] = returnDetectPointOfCircle(new Point(ball.getFake_x(), ball.getFake_y()), directions[i], 10);
-        }
-        return returnValues;
-    }
-
 
     /**
-     * 원의 중심좌표와 각도와 지름이 주어졌을때 좌표 리턴
-     * 0 <= direction < 360
+     *      *    입사 식:
+     *      * 		y = ix + inter
+     *
+     *      * 	벽 식:
+     *      * 		y = iwx + interw
+     *
+     *      * 	점 두 개 :
+     *      * 		(a, a * i + inter)
+     *      * 		(b, b * i + inter)
+     *      *
+     *      * 	ka = (a + ((a * i + inter) – interw) * iw) / (1 + iw * iw)
+     *      * 	kb = (b + ((b * i + inter) – interw) * iw) / (1 + iw * iw)
+     *      *
+     *      * 	샘플 점 두 개:
+     *      * 		(2 * ka – a, 2 * ka * iw – a * i + inter + 2 * interw)
+     *      * 		(2 * kb – b, 2 * kb * iw – b * i + inter + 2 * interw)
+     *      *
+     *      *
+     *      * 반사 식:
+     *      *
+     *      * 	inclinationR =
+     *      * {(2 * ka * iw – a * i + inter + 2 * interw) - (2 * kb * iw – b * i + inter + 2 * interw)} /
+     *      * (2 * ka – a) - (2 * kb – b)}
+     *      * 	y_interceptR =
+     *      * (2 * ka * iw – a * i + inter + 2 * interw) – inclinationR * (2 * ka – a)
+     *      *
+     *      * 	y =  inclinationR * x + y_interceptR
+     *      *
+     *      * 입력: 입사식, 벽식
+     *      * return : inclinationR, y_interceptR
      */
-    public Point returnDetectPointOfCircle(Point centerOfCircle, int direction, int radius) {
-        // 식: radius^2 = (x - centerOfCircle.getX)^2 + (y - centerOfCircle.getY)^2
-        if (direction < 90) {
-            direction = direction + 270;
-        } else {
-            direction = direction - 90;
-        }
-
-        int x = centerOfCircle.x + (int) Math.round(radius * Math.cos(direction / 57.2958));
-        int y = centerOfCircle.y + (int) Math.round(radius * Math.sin(direction / 57.2958));
-
-        return new Point(x, y);
-    }
-    // 설명은 테스트 코드를 참고
     public LinearFunction returnFunctionOfReflection(LinearFunction incidence, LinearFunction wall) {
         wall.setY_intercept(ball.getFake_y() - wall.getInclination() * ball.getFake_x());
         if (incidence.getInclination() == 0) {
@@ -298,6 +236,7 @@ public class Panel extends JPanel {
         return returnValue;
     }
 
+    // 벽에 터치했을 때의 로직
     private void wallTouch(int wallNum) {
         LinearFunction linearFunction;
         switch (wallNum) {
@@ -406,6 +345,7 @@ public class Panel extends JPanel {
         }
     }
 
+    // 정적인 것들의 holdings
     private void staticThings() {
         if (detected()) {
             wallTouch(wallNum);
@@ -413,7 +353,6 @@ public class Panel extends JPanel {
         }
         ball.move_x();
         frameRateAdjuster();
-
     }
 
     private class SpeedAdjuster extends Thread {
