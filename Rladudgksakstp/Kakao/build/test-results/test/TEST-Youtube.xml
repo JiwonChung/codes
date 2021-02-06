@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Youtube" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-15T15:23:29" hostname="jwchung" time="17.083">
+  <properties/>
+  <testcase name="테스트()" classname="Youtube" time="17.083"/>
+  <system-out><![CDATA[0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 87.0.4280.88 (89e2380a3e36c3464b5dd1302349b1382549290d-refs/branch-heads/4280@{#1761}) on port 31258
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+1월 16, 2021 12:23:29 오전 org.openqa.selenium.remote.ProtocolHandshake createSession
+정보: Detected dialect: W3C
+]]></system-err>
+</testsuite>
