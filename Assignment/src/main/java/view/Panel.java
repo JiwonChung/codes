@@ -21,7 +21,6 @@ public class Panel extends JPanel {
     double[] inclinations = new double[4];
     int[] y_intercepts = new int[4];
 
-
     // 박은 벽
     byte wallNum = -1;
     byte lastTouchedWall = -1;
