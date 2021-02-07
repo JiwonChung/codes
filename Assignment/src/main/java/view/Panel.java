@@ -10,7 +10,6 @@ import java.util.Random;
 
 public class Panel extends JPanel {
 
-
     // 계기판 1의 객체
     final private Speedometer speedometer = new Speedometer();
     // 공 객체 ()
