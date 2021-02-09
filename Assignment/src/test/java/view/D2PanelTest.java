@@ -1,15 +1,16 @@
 package view;
 
-import model.Ball;
+import model.D2.D2Ball;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import view.D2.D2Frame;
 
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
-class PanelTest {
-    Ball ball = new Ball();
+class D2PanelTest {
+    D2Ball d2Ball = new D2Ball();
     float[] inclinations = new float[4];
     int[] y_intercepts = new int[4];
     int[] xPoints = new int[4];
@@ -44,36 +45,36 @@ class PanelTest {
         Random random = new Random();
         // Frame.WIDTH / 2 - 200 <= x1 <= Frame.WIDTH / 2 + 200
         // y1 = Frame.HEIGHT / 2 - 250
-        xPoints[0] = random.nextInt(400) + Frame.WIDTH / 2 - 200;
-        yPoints[0] = Frame.HEIGHT / 2 - 250;
+        xPoints[0] = random.nextInt(400) + D2Frame.WIDTH / 2 - 200;
+        yPoints[0] = D2Frame.HEIGHT / 2 - 250;
 
         // x2 = Frame.WIDTH / 2 - 250
         // Frame.HEIGHT / 2 - 200 <= y2 <= Frame.HEIGHT / 2 + 200
-        xPoints[1] = Frame.WIDTH / 2 - 250;
-        yPoints[1] = random.nextInt(400) + Frame.HEIGHT / 2 - 200;
+        xPoints[1] = D2Frame.WIDTH / 2 - 250;
+        yPoints[1] = random.nextInt(400) + D2Frame.HEIGHT / 2 - 200;
 
         // Frame.WIDTH / 2 - 200 <= x3 <= FRAME.WIDTH / 2 + 200
         // y3 = Frame.HEIGHT / 2 + 250
-        xPoints[2] = random.nextInt(400) + Frame.WIDTH / 2 - 200;
-        yPoints[2] = Frame.HEIGHT / 2 + 250;
+        xPoints[2] = random.nextInt(400) + D2Frame.WIDTH / 2 - 200;
+        yPoints[2] = D2Frame.HEIGHT / 2 + 250;
 
         // x4 = Frame.WIDTH / 2 + 250
         // Frame.HEIGHT / 2 - 200 <= y4 <= Frame.HEIGHT / 2 + 200
-        xPoints[3] = Frame.WIDTH / 2 + 250;
-        yPoints[3] = random.nextInt(400) + Frame.HEIGHT / 2 - 200;
+        xPoints[3] = D2Frame.WIDTH / 2 + 250;
+        yPoints[3] = random.nextInt(400) + D2Frame.HEIGHT / 2 - 200;
 
-        ball.setFake_x(250);
-        ball.setFake_y(250);
-        ball.setInclination(1);
-        ball.setDirectionFlag(true);
+        d2Ball.setFake_x(250);
+        d2Ball.setFake_y(250);
+        d2Ball.setInclination(1);
+        d2Ball.setDirectionFlag(true);
         inclinations[0] = - (float) (yPoints[0] - yPoints[3]) / (xPoints[0] - xPoints[3]);
         inclinations[1] = - (float) (yPoints[0] - yPoints[1]) / (xPoints[0] - xPoints[1]);
         inclinations[2] = - (float) (yPoints[1] - yPoints[2]) / (xPoints[1] - xPoints[2]);
         inclinations[3] = - (float) (yPoints[2] - yPoints[3]) / (xPoints[2] - xPoints[3]);
-        y_intercepts[0] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[0]) - inclinations[0] * (xPoints[0] - Frame.WIDTH / 2 + 250));
-        y_intercepts[1] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[1]) - inclinations[1] * (xPoints[1] - Frame.WIDTH / 2 + 250));
-        y_intercepts[2] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[2]) - inclinations[2] * (xPoints[2] - Frame.WIDTH / 2 + 250));
-        y_intercepts[3] = (int) ((Frame.HEIGHT / 2 + 250 - yPoints[3]) - inclinations[3] * (xPoints[3] - Frame.WIDTH / 2 + 250));
+        y_intercepts[0] = (int) ((D2Frame.HEIGHT / 2 + 250 - yPoints[0]) - inclinations[0] * (xPoints[0] - D2Frame.WIDTH / 2 + 250));
+        y_intercepts[1] = (int) ((D2Frame.HEIGHT / 2 + 250 - yPoints[1]) - inclinations[1] * (xPoints[1] - D2Frame.WIDTH / 2 + 250));
+        y_intercepts[2] = (int) ((D2Frame.HEIGHT / 2 + 250 - yPoints[2]) - inclinations[2] * (xPoints[2] - D2Frame.WIDTH / 2 + 250));
+        y_intercepts[3] = (int) ((D2Frame.HEIGHT / 2 + 250 - yPoints[3]) - inclinations[3] * (xPoints[3] - D2Frame.WIDTH / 2 + 250));
 
         /*
         this._x = Frame.WIDTH / 2 - 250 + fake_x;
@@ -140,7 +141,7 @@ class PanelTest {
             } else if (directions[i] == 360) {
                 directions[i] = 0;
             }
-            returnValues[i] = returnDetectPointOfCircle(new Point(ball.getFake_x(), ball.getFake_y()), directions[i], 10);
+            returnValues[i] = returnDetectPointOfCircle(new Point(d2Ball.getFake_x(), d2Ball.getFake_y()), directions[i], 10);
         }
         return returnValues;
     }

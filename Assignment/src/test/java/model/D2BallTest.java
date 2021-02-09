@@ -1,8 +1,10 @@
 package model;
 
+import model.D2.D2JPoint;
+import model.D2.D2LinearFunction;
 import org.junit.jupiter.api.Test;
 
-class BallTest {
+class D2BallTest {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -58,7 +60,7 @@ class BallTest {
      * 입력: 입사식, 벽식
      * return : inclinationR, y_interceptR
      */
-    LinearFunction returnFunctionOfReflection(LinearFunction incidence, LinearFunction wall) {
+    D2LinearFunction returnFunctionOfReflection(D2LinearFunction incidence, D2LinearFunction wall) {
 
         if (incidence.getInclination() == 0) {
             incidence.setInclination(0.00001);
@@ -66,8 +68,8 @@ class BallTest {
         if (wall.getInclination() == 0) {
             wall.setInclination(0.00001);
         }
-        JPoint a = new JPoint();
-        JPoint b = new JPoint();
+        D2JPoint a = new D2JPoint();
+        D2JPoint b = new D2JPoint();
         a.setX(0);
         a.setY(incidence.getY_intercept());
         b.setX(5);
@@ -78,8 +80,8 @@ class BallTest {
         double kb = (b.getX() + (b.getY() - wall.getY_intercept()) * wall.getInclination())
                 / (1 + Math.pow(wall.getInclination(), 2));
 
-        JPoint aSample = new JPoint();
-        JPoint bSample = new JPoint();
+        D2JPoint aSample = new D2JPoint();
+        D2JPoint bSample = new D2JPoint();
         aSample.setX(2 * ka);
         aSample.setY(2 * ka * wall.getInclination() - a.getY() + 2 * wall.getY_intercept());
         bSample.setX(2 * kb - b.getX());
@@ -97,7 +99,7 @@ class BallTest {
         if (Math.abs(inclination) < 0.01) {
             inclination = 0;
         }
-        LinearFunction returnValue = new LinearFunction();
+        D2LinearFunction returnValue = new D2LinearFunction();
         returnValue.setInclination(inclination);
         returnValue.setY_intercept(aSample.getY() - returnValue.getInclination() * aSample.getX());
         return returnValue;
@@ -105,15 +107,15 @@ class BallTest {
 
     @Test
     void returnFunctionOfReflectionTest() {
-        LinearFunction incidence = new LinearFunction();
-        LinearFunction wall = new LinearFunction();
+        D2LinearFunction incidence = new D2LinearFunction();
+        D2LinearFunction wall = new D2LinearFunction();
         wall.setInclination(1/4f);
         wall.setY_intercept(0);
         incidence.setInclination(1/2f);
         incidence.setY_intercept(0);
-        LinearFunction linearFunction = returnFunctionOfReflection(incidence, wall);
-        System.out.println("inclination : " + linearFunction.getInclination());
-        System.out.println("y_intercept : " + linearFunction.getY_intercept());
+        D2LinearFunction d2LinearFunction = returnFunctionOfReflection(incidence, wall);
+        System.out.println("inclination : " + d2LinearFunction.getInclination());
+        System.out.println("y_intercept : " + d2LinearFunction.getY_intercept());
     }
 
     @Test

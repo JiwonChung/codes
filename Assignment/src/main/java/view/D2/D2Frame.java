@@ -1,15 +1,13 @@
-package view;
+package view.D2;
 
 import javax.swing.*;
 
 
-public class Frame extends JFrame {
-    private JPanel panel;
+public class D2Frame extends JFrame {
     public static int WIDTH = 1000;
     public static int HEIGHT = 800;
-    public Frame(JPanel panel) {
-        this.panel = panel;
-        setTitle("정류장");
+    public D2Frame(JPanel panel) {
+        setTitle("2D 공튀기기");
         setBounds(100, 100, WIDTH, HEIGHT);
         setResizable(false);
         setContentPane(panel);

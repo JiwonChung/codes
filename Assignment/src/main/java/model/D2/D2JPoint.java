@@ -1,15 +1,15 @@
-package model;
+package model.D2;
 
 import java.awt.*;
 
-public class JPoint {
+public class D2JPoint {
     private double x;
     private double y;
 
-    public JPoint() {
+    public D2JPoint() {
     }
 
-    public JPoint(double x, double y) {
+    public D2JPoint(double x, double y) {
         this.x = x;
         this.y = y;
     }

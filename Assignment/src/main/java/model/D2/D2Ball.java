@@ -1,10 +1,9 @@
-package model;
+package model.D2;
 
-import view.Frame;
-import view.Panel;
+import view.D2.D2Frame;
 
 // 공 객체
-public class Ball {
+public class D2Ball {
     // 실제 x, y의 위치
     private int _x;
     private int _y;
@@ -30,7 +29,7 @@ public class Ball {
 
     public void setFake_x(int fake_x) {
         this.fake_x = fake_x;
-        this._x = Frame.WIDTH / 2 - 250 + fake_x;
+        this._x = D2Frame.WIDTH / 2 - 250 + fake_x;
     }
 
     public int getFake_y() {
@@ -39,7 +38,7 @@ public class Ball {
 
     public void setFake_y(int fake_y) {
         this.fake_y = fake_y;
-        this._y = Frame.HEIGHT / 2 + 250 - fake_y;
+        this._y = D2Frame.HEIGHT / 2 + 250 - fake_y;
     }
 
 
@@ -118,8 +117,8 @@ public class Ball {
             fake_x = (int) Math.round((fake_y - y_intercept) / inclination);
         }
 
-        this._x = Frame.WIDTH / 2 - 250 + fake_x;
-        this._y = Frame.HEIGHT / 2 + 250 - fake_y;
+        this._x = D2Frame.WIDTH / 2 - 250 + fake_x;
+        this._y = D2Frame.HEIGHT / 2 + 250 - fake_y;
     }
 
 

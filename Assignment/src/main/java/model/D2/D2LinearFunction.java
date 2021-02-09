@@ -1,15 +1,15 @@
-package model;
+package model.D2;
 
-public class LinearFunction {
+public class D2LinearFunction {
     private double inclination;
     private double y_intercept;
     private boolean direction;
 
-    public LinearFunction() {
+    public D2LinearFunction() {
         this(0, 0);
     }
 
-    public LinearFunction(double inclination, double y_intercept) {
+    public D2LinearFunction(double inclination, double y_intercept) {
         this.inclination = inclination;
         this.y_intercept = y_intercept;
     }
