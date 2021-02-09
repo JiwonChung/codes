@@ -1,17 +1,23 @@
-model/PoolTable.java
- model.PoolTable
-model/Ball.java
- model.Ball
-model/LinearFunction.java
- model.LinearFunction
-model/Speedometer.java
- model.Speedometer
-model/JPoint.java
- model.JPoint
-view/Frame.java
- view.Frame
+model/D2/D2JPoint.java
+ model.D2.D2JPoint
+model/D3/D3Ball.java
+ model.D3.D3Ball
 Main.java
  Main
-view/Panel.java
- view.Panel
- view.Panel$SpeedAdjuster
+model/D2/D2LinearFunction.java
+ model.D2.D2LinearFunction
+view/D2/D2Panel.java
+ view.D2.D2Panel
+ view.D2.D2Panel$SpeedAdjuster
+model/D2/D2Ball.java
+ model.D2.D2Ball
+model/Speedometer.java
+ model.Speedometer
+view/D2/D2Frame.java
+ view.D2.D2Frame
+view/D3/D3Frame.java
+ view.D3.D3Frame
+view/D3/D3Panel.java
+ view.D3.D3Panel
+D3Main.java
+ D3Main
