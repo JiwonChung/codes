@@ -84,7 +84,11 @@ public class D3Ball {
                 fake_y++;
             }
         }
+        if (directionFlag[1]) {
 
+        } else {
+
+        }
 
 
     }
