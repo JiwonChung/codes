@@ -2,13 +2,29 @@ package Test;
 
 public class Calculator {
     public static void main(String[] args) {
-        double basis = 4;
-        double[] xs = {1, 2, 3, 4, 5, 9, 10};
-        double[] ys = {5, 6, 7, 8, 9, 13, 14};
-        double weight = 1;
-
-        for (int i = 0; i < xs.length; i++) {
-            System.out.println(2 * basis + 2 * xs[i] * weight - 2 * ys[i]);
+        
+        double[] xs = new double[500];
+        double[] ys = new double[500];
+        for (int i = 0; i < 500; i++) {
+            xs[i] = i;
+            ys[i] = i * 10 + 4;
         }
+
+        double weight = 10;
+        double basis = 4;
+        
+        System.out.println(returnDifferentialCoefficient_basis(xs, ys, weight, basis));
+    }
+
+    // 도함수
+    static double returnDifferentialCoefficient_basis(double[] xs, double[] ys, double weight, double basis) {
+        int m = xs.length;
+        double tangentLinesInclination = 0;
+
+        for (int i = 0; i < m; i++) {
+            tangentLinesInclination += 2 * basis + 2 * xs[i] * weight - 2 * ys[i];
+        }
+
+        return tangentLinesInclination / m;
     }
 }

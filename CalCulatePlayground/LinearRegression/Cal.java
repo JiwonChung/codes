@@ -12,42 +12,71 @@ public class Cal {
             xs[i] = i;
             ys[i] = i * 4 + 10;
         }
-        double weight = random.nextInt(200) - 100;
-        double basis = random.nextInt(200) - 100;
 
+        xs[10] = 80;
+        ys[5] = 9;
 
+        double weight = random.nextInt(50) - 25;
+        double basis = 10;
+        
+        double min = 1000;
+        boolean kill_weight = false;
 
-        for (int q = 0; q < 1000; q++) {
-            for (int ppp = 0; ppp < 5000; ppp++) {
-                double differentialCoefficient_2 = returnDifferentialCoefficient_weight(xs, ys, weight, basis);
-
-                if (Math.round(differentialCoefficient_2 * 1000) / 1000.0 == 0) {
-                    break;
-                }
-
-                if (differentialCoefficient_2 > 0) {
-                    weight -= 0.01;
-                } else if (differentialCoefficient_2 < 0) {
-                    weight += 0.01;
-                }
-            }
-
-            for (int ppp = 0; ppp < 5000; ppp++) {
-                double differentialCoefficient = returnDifferentialCoefficient_basis(xs, ys, weight, basis);
-                
-                if (Math.round(differentialCoefficient * 1000) / 1000.0 == 0) {
-                    break;
-                }
-
-                if (differentialCoefficient > 0) {
-                    basis -= 0.01;
-                } else if (differentialCoefficient < 0) {
-                    basis += 0.01;
-                }
-            }
+        for (int q = 0; q < 5000; q++) {
+            boolean a = true, b = false;
             
+            
+            if (!kill_weight) {
+                a = false;
+                for (int ppp = 0; ppp < 5000; ppp++) {
+                    double differentialCoefficient_2 = returnDifferentialCoefficient_weight(xs, ys, weight, basis);
+
+                    if (Math.round(differentialCoefficient_2 * 100) / 100.0 == 0) {
+                        double tmpMin = 0;
+                        for (int i = 0; i < xs.length; i++) {
+                            tmpMin += weight * xs[i] + basis - ys[i];
+                        }
+
+                        if (Math.round((min - tmpMin) * 100) / 100.0 == 0) {
+                            System.out.println("help");
+                            kill_weight = !kill_weight;
+                        }                  
+                        
+                        if (min > tmpMin) {
+                            a = !a;
+                            min = tmpMin;
+                            break;
+                        }
+                    } else if (differentialCoefficient_2 > 0) {
+                        weight -= 0.01;
+                    } else if (differentialCoefficient_2 < 0) {
+                        weight += 0.01;
+                    }
+                }
+            }
+
+            // for (int ppp = 0; ppp < 5000; ppp++) {
+            //     double differentialCoefficient = returnDifferentialCoefficient_basis(xs, ys, weight, basis);
+                
+            //     if (Math.round(differentialCoefficient * 100) / 100.0 == 0) {
+            //         b = !b;
+            //         break;
+            //     } else if (differentialCoefficient > 0) {
+            //         basis -= 0.01;
+            //     } else if (differentialCoefficient < 0) {
+            //         basis += 0.01;
+            //     }
+            // }
+
+
+            if (a && b) {
+                break;
+            }
         }
 
+        // target
+        // weight : 4
+        // basis : 10
         
         System.out.println("weight : " + weight);
         System.out.println("basis : " + basis);
