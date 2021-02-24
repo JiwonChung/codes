@@ -23,27 +23,10 @@ public class LinearRegression {
         
         // this is value that change at once
         double valueToChange = 0.01;
-        
-        double cost = 100;
-        List<Double> hypothesisDoubles = new ArrayList<Double>();
-        while(cost < 0.01) {
-            for (int i = 0; i < xs.length; i++) {
-                // hypothesis
-                hypothesisDoubles.add(weight * xs[i] + basis);
-            }
-            cost = 0;
-            for (int i = 0; i < hypothesisDoubles.size(); i++) {
-                // use "cost" temporally
-                cost += Math.sqrt(hypothesisDoubles.get(i) - ys[i]);
-            }
 
-            cost = cost / hypothesisDoubles.size();
-            
-            // Use Derivative
-            
-            
-            
-        }
+
+        
+        
 
 
 
