@@ -3,6 +3,11 @@ public class LinearFunction {
     private double weight;
     private double basis;
 
+    public LinearFunction(double weight, double basis) {
+        this.weight = weight;
+        this.basis = basis;
+    }
+
     public void setWeight(double weight) {
         this.weight = weight;
     }

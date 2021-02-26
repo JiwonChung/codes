@@ -1,79 +1,66 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
 
 public class Cal {
     static Random random = new Random();
     public static void main(String[] args) {
 
-        double[] xs = new double[500];
-        double[] ys = new double[500];
+        double[] xs = new double[10000];
+        double[] ys = new double[10000];
 
 
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 10000; i++) {
             xs[i] = i;
             ys[i] = i * 4 + 10;
         }
-
-        xs[10] = 80;
-        ys[5] = 9;
+        xs[random.nextInt(10000)] = random.nextInt(100) - 50;
+        ys[random.nextInt(10000)] = random.nextInt(100) - 50;
+        xs[random.nextInt(10000)] = random.nextInt(100) - 50;
+        ys[random.nextInt(10000)] = random.nextInt(100) - 50;
+        xs[random.nextInt(10000)] = random.nextInt(100) - 50;
+        ys[random.nextInt(10000)] = random.nextInt(100) - 50;
 
         double weight = random.nextInt(50) - 25;
-        double basis = 10;
+        double basis = 50;
+
         
-        double min = 1000;
-        boolean kill_weight = false;
+        Map<LinearFunction, Double> min = new HashMap<>();
 
         for (int q = 0; q < 5000; q++) {
-            boolean a = true, b = false;
-            
-            
-            if (!kill_weight) {
-                a = false;
-                for (int ppp = 0; ppp < 5000; ppp++) {
-                    double differentialCoefficient_2 = returnDifferentialCoefficient_weight(xs, ys, weight, basis);
-
-                    if (Math.round(differentialCoefficient_2 * 100) / 100.0 == 0) {
-                        double tmpMin = 0;
-                        for (int i = 0; i < xs.length; i++) {
-                            tmpMin += weight * xs[i] + basis - ys[i];
-                        }
-
-                        if (Math.round((min - tmpMin) * 100) / 100.0 == 0) {
-                            System.out.println("help");
-                            kill_weight = !kill_weight;
-                        }                  
-                        
-                        if (min > tmpMin) {
-                            a = !a;
-                            min = tmpMin;
-                            break;
-                        }
-                    } else if (differentialCoefficient_2 > 0) {
-                        weight -= 0.01;
-                    } else if (differentialCoefficient_2 < 0) {
-                        weight += 0.01;
-                    }
-                }
-            }
-
-            // for (int ppp = 0; ppp < 5000; ppp++) {
-            //     double differentialCoefficient = returnDifferentialCoefficient_basis(xs, ys, weight, basis);
+            basis -= 0.1;
+            for (int ppp = 0; ppp < 5000; ppp++) {
+                double differentialCoefficient_2 = returnDifferentialCoefficient_weight(xs, ys, weight, basis);
                 
-            //     if (Math.round(differentialCoefficient * 100) / 100.0 == 0) {
-            //         b = !b;
-            //         break;
-            //     } else if (differentialCoefficient > 0) {
-            //         basis -= 0.01;
-            //     } else if (differentialCoefficient < 0) {
-            //         basis += 0.01;
-            //     }
-            // }
+                double tmp = 0;
+                for (int i = 0; i < xs.length; i++) {
+                    tmp += Math.pow(weight * xs[i] + basis - ys[i], 2);
+                }
+                LinearFunction functionTmp = new LinearFunction(weight, basis);
+                min.put(functionTmp, tmp / xs.length);
 
-
-            if (a && b) {
-                break;
+                if (Math.round(differentialCoefficient_2 * 1000) / 1000.0 == 0) {
+                    break;
+                } else if (differentialCoefficient_2 > 0) {
+                    weight -= 0.01;
+                } else if (differentialCoefficient_2 < 0) {
+                    weight += 0.01;
+                }
             }
         }
 
+        double findTheMinimum_cost = 1000000000;
+        Iterator<Map.Entry<LinearFunction, Double>> itr = min.entrySet().iterator();
+        while (itr.hasNext()) {
+            Map.Entry<LinearFunction, Double> entry = itr.next();
+            if (entry.getValue() < findTheMinimum_cost) {
+                findTheMinimum_cost = entry.getValue();
+                weight = entry.getKey().getWeight();
+                basis = entry.getKey().getBasis();
+            }
+        }
+        
         // target
         // weight : 4
         // basis : 10
