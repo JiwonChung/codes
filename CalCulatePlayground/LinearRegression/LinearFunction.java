@@ -7,6 +7,9 @@ public class LinearFunction {
         this.weight = weight;
         this.basis = basis;
     }
+    public LinearFunction() {
+        
+    }
 
     public void setWeight(double weight) {
         this.weight = weight;
