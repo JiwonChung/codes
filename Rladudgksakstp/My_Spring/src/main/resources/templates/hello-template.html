@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http//www.thymeleaf.org"  lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>hello-template</title>
 </head>
 <body>
-$END$
+    <a th:text="${name} + '  hello'"> hello this will be error</a>
 </body>
 </html>

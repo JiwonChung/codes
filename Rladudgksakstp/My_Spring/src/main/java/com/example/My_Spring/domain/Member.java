@@ -1,6 +1,6 @@
 package com.example.My_Spring.domain;
 
-public class Members {
+public class Member {
     private long id;
     private String name;
     private String password;

@@ -15,17 +15,17 @@ public class Cal {
             xs[i] = i;
             ys[i] = i * 4 + 10;
         }
-        xs[random.nextInt(10000)] = random.nextInt(100) - 50;
-        ys[random.nextInt(10000)] = random.nextInt(100) - 50;
-        xs[random.nextInt(10000)] = random.nextInt(100) - 50;
-        ys[random.nextInt(10000)] = random.nextInt(100) - 50;
-        xs[random.nextInt(10000)] = random.nextInt(100) - 50;
-        ys[random.nextInt(10000)] = random.nextInt(100) - 50;
+        // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
+        // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
+        // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
+        // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
+        // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
+        // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
 
         double weight = random.nextInt(50) - 25;
         double basis = 50;
 
-        
+
         Map<LinearFunction, Double> min = new HashMap<>();
 
         for (int q = 0; q < 5000; q++) {

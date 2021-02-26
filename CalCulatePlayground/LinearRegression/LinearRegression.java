@@ -24,12 +24,6 @@ public class LinearRegression {
         // this is value that change at once
         double valueToChange = 0.01;
 
-
-        
-        
-
-
-
         LinearFunction returnValue = new LinearFunction();
         returnValue.setWeight(weight);
         returnValue.setBasis(basis);
