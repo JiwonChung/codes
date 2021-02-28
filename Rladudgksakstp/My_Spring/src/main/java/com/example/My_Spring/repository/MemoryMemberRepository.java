@@ -4,7 +4,7 @@ import com.example.My_Spring.domain.Member;
 
 import java.util.*;
 
-public class MemoryMemberRepository implements MembersRepository {
+public class MemoryMemberRepository implements MemberRepository {
     long sequence = 0;
     Map<Long, Member> store = new HashMap<>();
 
