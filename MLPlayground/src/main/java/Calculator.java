@@ -1,4 +1,4 @@
-package Test;
+import java.util.Arrays;
 
 public class Calculator {
     public static void main(String[] args) {
@@ -9,11 +9,13 @@ public class Calculator {
             xs[i] = i;
             ys[i] = i * 10 + 4;
         }
+        System.out.println(Arrays.toString(xs));
+        System.out.println(Arrays.toString(ys));
 
-        double weight = 10;
-        double basis = 4;
+        // double weight = 10;
+        // double basis = 4;
         
-        System.out.println(returnDifferentialCoefficient_basis(xs, ys, weight, basis));
+        // System.out.println(returnDifferentialCoefficient_basis(xs, ys, weight, basis));
     }
 
     // 도함수

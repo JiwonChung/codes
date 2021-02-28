@@ -1,3 +1,6 @@
+package java;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -7,14 +10,17 @@ public class Cal {
     static Random random = new Random();
     public static void main(String[] args) {
 
-        double[] xs = new double[10000];
-        double[] ys = new double[10000];
+        double[] xs = new double[500];
+        double[] ys = new double[500];
 
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 500; i++) {
             xs[i] = i;
             ys[i] = i * 4 + 10;
         }
+        ys[30] = 10;
+        // System.out.println(Arrays.toString(xs));
+        // System.out.println(Arrays.toString(ys));
         // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
         // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
         // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
@@ -23,7 +29,7 @@ public class Cal {
         // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
 
         double weight = random.nextInt(50) - 25;
-        double basis = 50;
+        double basis = random.nextInt(50) - 25;
 
 
         Map<LinearFunction, Double> min = new HashMap<>();
