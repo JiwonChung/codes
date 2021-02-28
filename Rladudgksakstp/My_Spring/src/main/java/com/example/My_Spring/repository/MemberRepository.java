@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MembersRepository {
+public interface MemberRepository {
     Member save(Member member);
 
     Optional<Member> findById(long id);
