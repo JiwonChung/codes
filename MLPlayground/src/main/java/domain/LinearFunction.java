@@ -1,3 +1,5 @@
+package domain;
+
 public class LinearFunction {
     private double weight;
     private double basis;

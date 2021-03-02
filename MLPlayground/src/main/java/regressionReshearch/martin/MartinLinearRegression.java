@@ -1,10 +1,11 @@
-import java.util.Arrays;
+package regressionReshearch.martin;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
-public class Cal {
+public class MartinLinearRegression {
     static Random random = new Random();
     public static void main(String[] args) {
 
@@ -13,24 +14,17 @@ public class Cal {
 
 
         for (int i = 0; i < 500; i++) {
-            xs[i] = i;
-            ys[i] = i * 4 + 10;
+            xs[i] = random.nextInt();
+            ys[i] = xs[i] * 4 + 10;
         }
-        ys[30] = 10;
-        // System.out.println(Arrays.toString(xs));
-        // System.out.println(Arrays.toString(ys));
-        // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
-        // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
-        // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
-        // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
-        // xs[random.nextInt(10000)] = random.nextInt(100) - 50;
-        // ys[random.nextInt(10000)] = random.nextInt(100) - 50;
 
-        double weight = random.nextInt(50) - 25;
-        double basis = random.nextInt(50) - 25;
+        double weight = 0;
+        double basis = 50;
+        double changeValue = 0.01;
 
 
-        Map<LinearFunction, Double> min = new HashMap<>();
+
+        Map<domain.LinearFunction, Double> min = new HashMap<>();
 
         for (int q = 0; q < 5000; q++) {
             basis -= 0.1;
@@ -41,23 +35,27 @@ public class Cal {
                 for (int i = 0; i < xs.length; i++) {
                     tmp += Math.pow(weight * xs[i] + basis - ys[i], 2);
                 }
-                LinearFunction functionTmp = new LinearFunction(weight, basis);
+                domain.LinearFunction functionTmp = new domain.LinearFunction(weight, basis);
                 min.put(functionTmp, tmp / xs.length);
+
 
                 if (Math.round(differentialCoefficient_2 * 1000) / 1000.0 == 0) {
                     break;
                 } else if (differentialCoefficient_2 > 0) {
-                    weight -= 0.01;
+                    weight -= changeValue;
                 } else if (differentialCoefficient_2 < 0) {
-                    weight += 0.01;
+                    weight += changeValue;
                 }
             }
         }
 
+
+
+
         double findTheMinimum_cost = 1000000000;
-        Iterator<Map.Entry<LinearFunction, Double>> itr = min.entrySet().iterator();
+        Iterator<Map.Entry<domain.LinearFunction, Double>> itr = min.entrySet().iterator();
         while (itr.hasNext()) {
-            Map.Entry<LinearFunction, Double> entry = itr.next();
+            Map.Entry<domain.LinearFunction, Double> entry = itr.next();
             if (entry.getValue() < findTheMinimum_cost) {
                 findTheMinimum_cost = entry.getValue();
                 weight = entry.getKey().getWeight();
@@ -65,6 +63,24 @@ public class Cal {
             }
         }
 
+
+
+        /*
+        for (int i = 0; i < 50000; i++) {
+            if (returnDifferentialCoefficient_weight(xs, ys, weight, basis) > 0) {
+                weight -= changeValue;
+            } else {
+                weight += changeValue;
+            }
+
+            if (returnDifferentialCoefficient_basis(xs, ys, weight, basis) > 0) {
+                basis -= changeValue;
+            } else {
+                basis += changeValue;
+            }
+        }
+
+        */
         // target
         // weight : 4
         // basis : 10
@@ -73,6 +89,8 @@ public class Cal {
         System.out.println("basis : " + basis);
 
     }
+
+
 
     // H(x) = x * weight + basis
     // cost(weight, basis) = sigma(xs.length - 1, i = 0)[H(xs[i]) - ys[i]] / xs.length
