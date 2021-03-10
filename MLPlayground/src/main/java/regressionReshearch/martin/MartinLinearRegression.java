@@ -14,7 +14,7 @@ public class MartinLinearRegression {
 
 
         for (int i = 0; i < 500; i++) {
-            xs[i] = random.nextInt();
+            xs[i] = random.nextDouble();
             ys[i] = xs[i] * 4 + 10;
         }
 
@@ -27,7 +27,7 @@ public class MartinLinearRegression {
         Map<domain.LinearFunction, Double> min = new HashMap<>();
 
         for (int q = 0; q < 5000; q++) {
-            basis -= 0.1;
+            basis -= 0.01;
             for (int ppp = 0; ppp < 5000; ppp++) {
                 double differentialCoefficient_2 = returnDifferentialCoefficient_weight(xs, ys, weight, basis);
 
@@ -53,9 +53,7 @@ public class MartinLinearRegression {
 
 
         double findTheMinimum_cost = 1000000000;
-        Iterator<Map.Entry<domain.LinearFunction, Double>> itr = min.entrySet().iterator();
-        while (itr.hasNext()) {
-            Map.Entry<domain.LinearFunction, Double> entry = itr.next();
+        for (Map.Entry<domain.LinearFunction, Double> entry : min.entrySet()) {
             if (entry.getValue() < findTheMinimum_cost) {
                 findTheMinimum_cost = entry.getValue();
                 weight = entry.getKey().getWeight();

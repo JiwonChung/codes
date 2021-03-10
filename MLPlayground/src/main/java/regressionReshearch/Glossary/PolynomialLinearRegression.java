@@ -58,5 +58,6 @@ public class PolynomialLinearRegression {
     static double[][] enhanced_MakeLinear(double weight1, double weight2, double weight3, double bias, int numberOfData) {
         double[][] returnValue = new double[3][numberOfData];
 
+        return returnValue;
     }
 }
