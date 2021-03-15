@@ -1,7 +1,6 @@
 package regressionReshearch.martin;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
@@ -13,13 +12,17 @@ public class MartinLinearRegression {
         double[] ys = new double[500];
 
 
+        // weight : 4
+        // bias : 10
         for (int i = 0; i < 500; i++) {
             xs[i] = random.nextDouble();
             ys[i] = xs[i] * 4 + 10;
         }
 
+        // 초기값입니다.
         double weight = 0;
-        double basis = 50;
+        double bias = 50;
+
         double changeValue = 0.01;
 
 
@@ -27,15 +30,15 @@ public class MartinLinearRegression {
         Map<domain.LinearFunction, Double> min = new HashMap<>();
 
         for (int q = 0; q < 5000; q++) {
-            basis -= 0.01;
+            bias -= 0.01;
             for (int ppp = 0; ppp < 5000; ppp++) {
-                double differentialCoefficient_2 = returnDifferentialCoefficient_weight(xs, ys, weight, basis);
+                double differentialCoefficient_2 = returnDifferentialCoefficient_weight(xs, ys, weight, bias);
 
                 double tmp = 0;
                 for (int i = 0; i < xs.length; i++) {
-                    tmp += Math.pow(weight * xs[i] + basis - ys[i], 2);
+                    tmp += Math.pow(weight * xs[i] + bias - ys[i], 2);
                 }
-                domain.LinearFunction functionTmp = new domain.LinearFunction(weight, basis);
+                domain.LinearFunction functionTmp = new domain.LinearFunction(weight, bias);
                 min.put(functionTmp, tmp / xs.length);
 
 
@@ -57,7 +60,7 @@ public class MartinLinearRegression {
             if (entry.getValue() < findTheMinimum_cost) {
                 findTheMinimum_cost = entry.getValue();
                 weight = entry.getKey().getWeight();
-                basis = entry.getKey().getBasis();
+                bias = entry.getKey().getBasis();
             }
         }
 
@@ -65,26 +68,26 @@ public class MartinLinearRegression {
 
         /*
         for (int i = 0; i < 50000; i++) {
-            if (returnDifferentialCoefficient_weight(xs, ys, weight, basis) > 0) {
+            if (returnDifferentialCoefficient_weight(xs, ys, weight, bias) > 0) {
                 weight -= changeValue;
             } else {
                 weight += changeValue;
             }
 
-            if (returnDifferentialCoefficient_basis(xs, ys, weight, basis) > 0) {
-                basis -= changeValue;
+            if (returnDifferentialCoefficient_basis(xs, ys, weight, bias) > 0) {
+                bias -= changeValue;
             } else {
-                basis += changeValue;
+                bias += changeValue;
             }
         }
 
         */
         // target
         // weight : 4
-        // basis : 10
+        // bias : 10
 
         System.out.println("weight : " + weight);
-        System.out.println("basis : " + basis);
+        System.out.println("bias : " + bias);
 
     }
 

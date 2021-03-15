@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Martin2LinearRegression {
 
+    // 작동하지 않음
     public static void main(String[] args) {
         double[][] tmp = make_linear(0.3, 0.6);
         double[] xs = tmp[0];

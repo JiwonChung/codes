@@ -1,0 +1,16 @@
+regressionReshearch/Glossary/GlossaryLinearRegression.java
+ regressionReshearch.Glossary.GlossaryLinearRegression
+Calculator.java
+ Calculator
+regressionReshearch/Glossary/PolynomialLinearRegression.java
+ regressionReshearch.Glossary.PolynomialLinearRegression
+domain/LinearFunction.java
+ domain.LinearFunction
+regressionReshearch/TeddyLinearRegression.java
+ regressionReshearch.TeddyLinearRegression
+regressionReshearch/martin/Martin2LinearRegression.java
+ regressionReshearch.martin.Martin2LinearRegression
+regressionReshearch/martin/MartinLinearRegression.java
+ regressionReshearch.martin.MartinLinearRegression
+regressionReshearch/HongLinearRegression.java
+ regressionReshearch.HongLinearRegression
