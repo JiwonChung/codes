@@ -45,12 +45,6 @@ public class School {
     // (학생 수 / 전입)
     private double students_moveInRatio;
 
-    // (학생 수 / 특별교실 수)
-    private double students_specialClassRatio;
-
-    // (학생 수 / 교실 수)
-    private double students_classRoomsRatio;
-
 
     /**
      * 교사
@@ -93,7 +87,7 @@ public class School {
      * 학교 시설
      */
     // 학교 부지 크기
-    private double schoolSize;
+    private long schoolSize;
 
     // 학생 1인당 교지 면적
     private double schoolSize_studentsRatio; // 학교 크기 할 때 넣어주자
@@ -113,7 +107,7 @@ public class School {
     // 특별교실 수
     private long specialClass_number;
 
-    // (일반교실 수)
+    // (일반교실 수 / 학생 수)
     private double generalClass_studentsRatio;
 
     // (특별교실 수 / 학생 수)
@@ -198,7 +192,6 @@ public class School {
     }
 
 
-
     /**
      * 교사
      */
@@ -238,9 +231,9 @@ public class School {
     /**
      * set not only schoolSize but also schoolSize_studentsRatio
      */
-    public void setSchoolSize(double schoolSize) {
+    public void setSchoolSize(long schoolSize) {
         this.schoolSize = schoolSize;
-        this.schoolSize_studentsRatio = this.students_number / this.schoolSize;
+        this.schoolSize_studentsRatio = (double) this.schoolSize / this.students_number;
     }
 
     public void setNumberOfDepartments(long numberOfDepartments) {
@@ -262,7 +255,7 @@ public class School {
 
     public void setSpecialClass_number(long specialClass_number) {
         this.specialClass_number = specialClass_number;
-        this.specialClass_studentsRatio = (double) this.specialClass_number / this.students_number;
+        this.specialClass_studentsRatio = (double) this.students_number / this.specialClass_number;
     }
 
 

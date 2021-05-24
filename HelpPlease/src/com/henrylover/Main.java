@@ -1,24 +1,24 @@
 package com.henrylover;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.henrylover.model.School;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        List<School> hotGoodBye = getSchoolNames();
+    public static void main(String[] args) throws Exception {
+        List<School> hotGoodBye = consummateData(getSchoolNames());
+        ObjectMapper objectMapper = new ObjectMapper();
 
         // test
-        System.out.println(hotGoodBye.get(0).getSchoolName());
+        System.out.println(objectMapper.writeValueAsString(hotGoodBye));
 
     }
 
@@ -26,8 +26,8 @@ public class Main {
      * 학교 리스트 생성 학과 수 추가해 줘야 함
      * @return School list
      */
-    private static List<School> getSchoolNames() {
-        List<School> returnValue = new ArrayList<>();
+    private static Queue<String> getSchoolNames() {
+        Queue<String> returnValue = new LinkedList<>();
         try {
             FileInputStream hiveFile = new FileInputStream("testDataSet\\thirdClassDBTlqkf.xlsx");
             XSSFWorkbook workbook = new XSSFWorkbook(hiveFile);
@@ -42,9 +42,7 @@ public class Main {
 
                 if (!stringCellValue.equals(schoolName)) {
                     schoolName = stringCellValue;
-                    School school = new School();
-                    school.setSchoolName(schoolName);
-                    returnValue.add(school);
+                    returnValue.add(schoolName);
                 }
             }
 
@@ -56,7 +54,7 @@ public class Main {
         return returnValue;
     }
 
-    private static List<School> consummateData(List<School> schoolList) {
+    private static List<School> consummateData(Queue<String> schoolSet) {
 
         List<School> schools = new ArrayList<>();
         try {
@@ -64,107 +62,143 @@ public class Main {
             XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
             XSSFSheet sheet = workbook.getSheetAt(0);
 
-            int maxRows = 21279;
+            for (String s : schoolSet) {
+                Optional<XSSFRow> optional = searchRowWithSchoolNameInSecondDB(s, sheet);
 
-            for (int rowIndex = 14; rowIndex <= maxRows;  rowIndex++) {
-                XSSFRow row = sheet.getRow(rowIndex);
-                School school;
+                if (optional.isEmpty()) {
+                    continue;
+                }
+                XSSFRow row = optional.get();
+
+                School school = new School();
 
                 XSSFCell cell = row.getCell(8);
                 // 학교이름으로 school 객체를 받아옵니다.
-                String schoolName = cell.getStringCellValue();
-                List<School> collect = schoolList
-                        .stream()
-                        .filter(
-                                a -> a.getSchoolName().equals(schoolName)
-                        ).collect(Collectors.toList());
-
-                if (collect.size() == 1) {
-                    // 특성화고 일 경우
-                    school = collect.get(0);
-                } else {
-                    throw new IllegalStateException("같은 학교가 2개 이상 나옵니다. ");
-                }
+                school.setSchoolName(cell.getStringCellValue());
 
 
-                cell = row.getCell(28);
+                /**
+                 * 학생 수
+                 */
                 // 전체 학생 수
-                long students_number = (int) cell.getNumericCellValue();
+                cell = row.getCell(28);
+                int students_number = (int) cell.getNumericCellValue();
                 school.setStudents_number(students_number);
 
 
-                cell = row.getCell(29);
                 // 여학생 수
+                cell = row.getCell(29);
+                school.setStudents_female_number((int) cell.getNumericCellValue());
 
 
-                cell = row.getCell(55);
-                // 일반 교사 수
-
-
-                cell = row.getCell(56);
-                // 여교사 수
-
-
-                cell = row.getCell(53);
-                // 보직교사 수
-
-
-                cell = row.getCell(54);
-                // 보직교사 여자 수
-
-
-                cell = row.getCell(73);
                 // 전출
+                cell = row.getCell(73);
+                school.setStudents_moveOutRatio(students_number / cell.getNumericCellValue());
 
 
-                cell = row.getCell(74);
                 // 전입
+                cell = row.getCell(74);
+                school.setStudents_moveInRatio(students_number / cell.getNumericCellValue());
 
 
-                cell = row.getCell(76);
-                // 졸업자 수
+                /**
+                 * 교사
+                 */
+                // 일반 교사 수
+                cell = row.getCell(55);
+                school.setGeneralTeacher_number((int) cell.getNumericCellValue());
 
 
-                cell = row.getCell(77);
-                // 진학자 수
+                // 보직교사 수
+                cell = row.getCell(53);
+                school.setPositionTeacher_number((int) cell.getNumericCellValue());
 
 
-                cell = row.getCell(80);
-                // 취업자 수
+                // 여교사 수
+                cell = row.getCell(56);
+                school.setGeneralTeacher_female_number((int) cell.getNumericCellValue());
 
 
-                cell = row.getCell(81);
-                // 입대자 수
+                // 보직교사 여자 수
+                cell = row.getCell(54);
+                school.setPositionTeacher_female_number((int) cell.getNumericCellValue());
 
 
-                cell = row.getCell(82);
-                // 기타
-
-
-                cell = row.getCell(83);
-                // 일반교실 수
-
-
-                cell = row.getCell(85);
-                // 특별교실 수
-
-
-                cell = row.getCell(88);
+                /**
+                 * 학교시설
+                 */
                 // 교지 면적
+                cell = row.getCell(88);
+                school.setSchoolSize((int) cell.getNumericCellValue());
 
 
-                cell = row.getCell(89);
-                // 1인당 교지 면적
+                // 일반교실 수
+                cell = row.getCell(83);
+                school.setGeneralClass_number((long) cell.getNumericCellValue());
 
+
+                // 특별교실 수
+                cell = row.getCell(85);
+                school.setSpecialClass_number((long) cell.getNumericCellValue());
+
+
+                // 진학률
+                cell = row.getCell(79);
+                school.setEnrollmentRate(cell.getNumericCellValue() / 100);
+
+
+
+                // 졸업자 수
+                cell = row.getCell(77);
+                int numberOfGraduates = (int) cell.getNumericCellValue();
+
+                // 진학자 수
+                cell = row.getCell(78);
+                int numberOfEnrolled = (int) cell.getNumericCellValue();
+
+                // 취업자 수
+                cell = row.getCell(80);
+                int numberOfEmployed = (int) cell.getNumericCellValue();
+
+                // 입대자 수
+                cell = row.getCell(81);
+                int numberOfEnlisted = (int) cell.getNumericCellValue();
+
+                // 취업률
+                school.setEmploymentRate(numberOfEmployed / (double) (numberOfGraduates - numberOfEnlisted - numberOfEnrolled));
+
+
+                schools.add(school);
 
             }
+
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
-        return schoolList;
+        return schools;
     }
+
+
+    public static Optional<XSSFRow> searchRowWithSchoolNameInSecondDB(String searchText, XSSFSheet sheet) {
+
+        //Iterate rows
+        for (int j = 14; j <= sheet.getLastRowNum(); j++) {
+
+            XSSFRow row = sheet.getRow(j);
+
+            XSSFCell cell = row.getCell(8);
+
+            if (searchText.equals(cell.getStringCellValue())) {
+                System.out.println(searchText);
+                return Optional.of(row);
+            }
+
+        }
+        return Optional.empty();
+    }
+
 }
 
 
