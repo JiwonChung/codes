@@ -92,12 +92,12 @@ public class Main {
 
                 // 전출
                 cell = row.getCell(73);
-                school.setStudents_moveOutRatio(students_number / cell.getNumericCellValue());
+                school.setStudents_moveOutRatio(cell.getNumericCellValue() / students_number);
 
 
                 // 전입
                 cell = row.getCell(74);
-                school.setStudents_moveInRatio(students_number / cell.getNumericCellValue());
+                school.setStudents_moveInRatio(cell.getNumericCellValue() / students_number);
 
 
                 /**

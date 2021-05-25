@@ -53,7 +53,7 @@ public class School {
             // 교장 교감 보건 특수 상담 사서 영양 제외
     private long generalTeacher_number;
 
-    // 일반교과 교사 수, 학생 수 ratio (학생 수 / 교사 수) // 일반교과 교사 수 할 때 넣어주자 (0)
+    // 일반교과 교사 수, 학생 수 ratio (교사 수 / 학생 수) // 일반교과 교사 수 할 때 넣어주자 (0)
     private double generalTeacher_studentsRatio;
 
     // 일반교과 교사 중 여자교사 수
@@ -62,10 +62,10 @@ public class School {
     // 일반교과 교사 남녀 성비 (여교사 수 / 전체)
     private double generalTeacher_sexRatio;
 
-    // 일반교과 남교사 수, 학생 수 ratio (학생 수 / 남교사 수)
+    // 일반교과 남교사 수, 학생 수 ratio (남교사 수 / 학생 수)
     private double generalTeacher_male_studentsRatio;
 
-    // 일반교과 여교사 수, 학생 수 ratio (학생 수 / 여교사 수)
+    // 일반교과 여교사 수, 학생 수 ratio (여교사 수 / 학생 수)
     private double generalTeacher_female_studentsRatio;
 
 
@@ -180,15 +180,15 @@ public class School {
 
     public void setStudents_female_number(long students_female_number) {
         this.students_female_number = students_female_number;
-        this.students_sexRatio = (double) this.students_female_number / this.students_number;
+        this.students_sexRatio = Math.round((double) this.students_female_number / this.students_number * 10000) / 10000.0;
     }
 
     public void setStudents_moveOutRatio(double students_moveOutRatio) {
-        this.students_moveOutRatio = students_moveOutRatio;
+        this.students_moveOutRatio = Math.round(students_moveOutRatio * 10000) / 10000.0;
     }
 
     public void setStudents_moveInRatio(double students_moveInRatio) {
-        this.students_moveInRatio = students_moveInRatio;
+        this.students_moveInRatio = Math.round(students_moveInRatio * 10000) / 10000.0;
     }
 
 
@@ -200,7 +200,7 @@ public class School {
      */
     public void setGeneralTeacher_number(long generalTeacher_number) {
         this.generalTeacher_number = generalTeacher_number;
-        this.generalTeacher_studentsRatio = (double) this.students_number / this.generalTeacher_number;
+        this.generalTeacher_studentsRatio = Math.round((double) this.generalTeacher_number / this.students_number * 10000) / 10000.0;
     }
 
     /**
@@ -208,11 +208,11 @@ public class School {
      */
     public void setGeneralTeacher_female_number(long generalTeacher_female_number) {
         this.generalTeacher_female_number = generalTeacher_female_number;
-        this.generalTeacher_sexRatio = (double) this.generalTeacher_female_number / this.generalTeacher_number;
-        this.generalTeacher_male_studentsRatio = (double) this.students_number /
-                (this.generalTeacher_number - this.generalTeacher_female_number);
-        this.generalTeacher_female_studentsRatio = (double) this.students_number /
-                this.generalTeacher_female_number;
+        this.generalTeacher_sexRatio = Math.round((double) this.generalTeacher_female_number / this.generalTeacher_number * 10000) / 10000.0;
+        this.generalTeacher_male_studentsRatio = Math.round(
+                (double) (this.generalTeacher_number - this.generalTeacher_female_number) / this.students_number * 10000) / 10000.0;
+        this.generalTeacher_female_studentsRatio = Math.round(
+                (double) this.generalTeacher_female_number / this.students_number * 10000) / 10000.0;
     }
 
     public void setPositionTeacher_number(long positionTeacher_number) {
@@ -221,7 +221,7 @@ public class School {
 
     public void setPositionTeacher_female_number(long positionTeacher_female_number) {
         this.positionTeacher_female_number = positionTeacher_female_number;
-        this.positionTeacher_sexRatio = (double) this.positionTeacher_female_number / this.positionTeacher_number;
+        this.positionTeacher_sexRatio = Math.round((double) this.positionTeacher_female_number / this.positionTeacher_number * 10000) / 10000.0;
     }
 
 
@@ -233,7 +233,7 @@ public class School {
      */
     public void setSchoolSize(long schoolSize) {
         this.schoolSize = schoolSize;
-        this.schoolSize_studentsRatio = (double) this.schoolSize / this.students_number;
+        this.schoolSize_studentsRatio = Math.round((double) this.schoolSize / this.students_number * 10000) / 10000.0;
     }
 
     public void setNumberOfDepartments(long numberOfDepartments) {
@@ -250,12 +250,12 @@ public class School {
 
     public void setGeneralClass_number(long generalClass_number) {
         this.generalClass_number = generalClass_number;
-        this.generalClass_studentsRatio = (double) this.students_number / this.generalClass_number;
+        this.generalClass_studentsRatio = Math.round((double) this.generalClass_number / this.students_number * 10000) / 10000.0;
     }
 
     public void setSpecialClass_number(long specialClass_number) {
         this.specialClass_number = specialClass_number;
-        this.specialClass_studentsRatio = (double) this.students_number / this.specialClass_number;
+        this.specialClass_studentsRatio = Math.round((double) this.specialClass_number / this.students_number * 10000) / 10000.0;
     }
 
 
@@ -264,11 +264,11 @@ public class School {
      * 종속변수
      */
     public void setEmploymentRate(double employmentRate) {
-        this.employmentRate = employmentRate;
+        this.employmentRate = Math.round(employmentRate * 1000) / 1000.0;
     }
 
     public void setEnrollmentRate(double enrollmentRate) {
-        this.enrollmentRate = enrollmentRate;
+        this.enrollmentRate = Math.round(enrollmentRate * 1000) / 1000.0;
     }
 
 
