@@ -60,6 +60,12 @@ public class School {
     // 학과 수
     private long numberOfDepartments;
 
+    // 일반교실 수
+    private long generalClass_number;
+
+    // 특수교실 수
+    private long specialClass_number;
+
 
     /**
      * 지역
@@ -68,7 +74,7 @@ public class School {
     private long regionalAverageIncome;
 
     // 지역 평당가
-    private long regionalPricePyRatio;
+    private long regionalPricePerPy;
 
     // 가격 변동 모멘텀 (21년 - 15년 변화량)
     private double regionalPriceMomentum;
@@ -196,6 +202,22 @@ public class School {
         this.numberOfDepartments = numberOfDepartments;
     }
 
+    public long getGeneralClass_number() {
+        return generalClass_number;
+    }
+
+    public void setGeneralClass_number(long generalClass_number) {
+        this.generalClass_number = generalClass_number;
+    }
+
+    public long getSpecialClass_number() {
+        return specialClass_number;
+    }
+
+    public void setSpecialClass_number(long specialClass_number) {
+        this.specialClass_number = specialClass_number;
+    }
+
     public long getRegionalAverageIncome() {
         return regionalAverageIncome;
     }
@@ -204,12 +226,12 @@ public class School {
         this.regionalAverageIncome = regionalAverageIncome;
     }
 
-    public long getRegionalPricePyRatio() {
-        return regionalPricePyRatio;
+    public long getRegionalPricePerPy() {
+        return regionalPricePerPy;
     }
 
-    public void setRegionalPricePyRatio(long regionalPricePyRatio) {
-        this.regionalPricePyRatio = regionalPricePyRatio;
+    public void setRegionalPricePerPy(long regionalPricePerPy) {
+        this.regionalPricePerPy = regionalPricePerPy;
     }
 
     public double getRegionalPriceMomentum() {

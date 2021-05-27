@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efb827bf-3160-46d7-a1a9-24873ce6e7cb" name="Default Changelist" comment="성공">
-      <change afterPath="$PROJECT_DIR$/src/com/henrylover/model/AroundSchool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/realHenryLover/model/School.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-8.0.25.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/realHenryLover/executable/Execute1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/realHenryLover/repository/MemorySchoolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/realHenryLover/repository/MysqlSchoolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/realHenryLover/repository/SchoolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/realHenryLover/test/MysqlSchoolRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClassDB_book.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClassDB_school.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClass_DB_pricePerPy.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClass_coefficient.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/ThirdClass_DB_hiveData.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/henrylover/repository/SchoolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/henrylover/repository/SchoolRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/henrylover/repository/SchoolRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/henrylover/model/AroundSchool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/henrylover/repository/SchoolRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/realHenryLover/model/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/realHenryLover/model/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled104.iml" beforeDir="false" afterPath="$PROJECT_DIR$/untitled104.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +33,7 @@
       <list>
         <option value="package-info" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -119,7 +133,10 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testDataSet/akmu" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.25297892" />
@@ -127,16 +144,23 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jwchu\Documents\codes\HelpPlease\testDataSet\akmu" />
       <recent name="C:\Users\jwchu\Documents\codes\HelpPlease\lib" />
       <recent name="C:\Users\jwchu\Documents\codes\HelpPlease\testDataSet" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.henrylover" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.realHenryLover.repository" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
-    <configuration name="ExcelDownTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.ExcelDownTest" />
+  <component name="RunManager" selected="Application.Execute1">
+    <configuration name="ExcelReadTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.ExcelReadTest" />
       <module name="untitled104" />
       <extension name="coverage">
         <pattern>
@@ -148,12 +172,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExcelReadTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.ExcelReadTest" />
+    <configuration name="Execute1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.realHenryLover.executable.Execute1" />
       <module name="untitled104" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.*" />
+          <option name="PATTERN" value="com.realHenryLover.executable.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -184,18 +208,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MysqlSchoolRepositoryTest.addNewSchool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="untitled104" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.realHenryLover.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.realHenryLover.test" />
+      <option name="MAIN_CLASS_NAME" value="com.realHenryLover.test.MysqlSchoolRepositoryTest" />
+      <option name="METHOD_NAME" value="addNewSchool" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.ExcelDownTest" />
       <item itemvalue="Application.ExcelReadTest" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="JUnit.MysqlSchoolRepositoryTest.addNewSchool" />
+      <item itemvalue="Application.Execute1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Execute1" />
+        <item itemvalue="JUnit.MysqlSchoolRepositoryTest.addNewSchool" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ExcelReadTest" />
-        <item itemvalue="Application.ExcelDownTest" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621864663790</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="성공">
+      <created>1622127571471</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622127571471</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
