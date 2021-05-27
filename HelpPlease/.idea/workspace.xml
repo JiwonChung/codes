@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efb827bf-3160-46d7-a1a9-24873ce6e7cb" name="Default Changelist" comment="성공">
+      <change afterPath="$PROJECT_DIR$/src/com/henrylover/model/AroundSchool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/realHenryLover/model/School.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/henrylover/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/henrylover/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/henrylover/model/School.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/henrylover/model/School.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/henrylover/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/henrylover/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/henrylover/model/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/henrylover/model/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/henrylover/repository/SchoolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/henrylover/repository/SchoolRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
