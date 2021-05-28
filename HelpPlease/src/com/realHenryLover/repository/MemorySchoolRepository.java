@@ -13,7 +13,6 @@ public class MemorySchoolRepository implements SchoolRepository {
 
     @Override
     public School addNewSchool(School school) {
-        school.setIndex(sequence);
         store.put(school.getIndex(), school);
         return store.get(sequence++);
     }

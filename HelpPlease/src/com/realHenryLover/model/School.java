@@ -95,6 +95,14 @@ public class School {
     // 연간 이용 책
     private long book_yearlyBook;
 
+    /**
+     * 종속변수
+     */
+    // 진학률
+    private double enrollmentRate;
+
+    // 취업률
+    private double employmentRate;
 
 
 
@@ -272,5 +280,21 @@ public class School {
 
     public void setBook_yearlyBook(long book_yearlyBook) {
         this.book_yearlyBook = book_yearlyBook;
+    }
+
+    public double getEnrollmentRate() {
+        return enrollmentRate;
+    }
+
+    public void setEnrollmentRate(double enrollmentRate) {
+        this.enrollmentRate = enrollmentRate;
+    }
+
+    public double getEmploymentRate() {
+        return employmentRate;
+    }
+
+    public void setEmploymentRate(double employmentRate) {
+        this.employmentRate = employmentRate;
     }
 }

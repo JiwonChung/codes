@@ -39,13 +39,12 @@ public class DBMemberRepository implements MemberRepository {
             System.out.println("e = " + e.getMessage());
         }
         return member;
-
     }
+
 
     @Override
     public Optional<Member> findById(long id) {
         try {
-
             ResultSet resultSet = statement.executeQuery("select * from hello_spring.members where `id`='" + id + "';");
             if (resultSet.next()) {
                 Member member = new Member();
