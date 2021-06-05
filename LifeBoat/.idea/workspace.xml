@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a0dbc5f7-e70e-49c9-b089-1aaecb95b21d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../HelpPlease/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HelpPlease/src/com/realHenryLover/executable/Execute2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/SparseBitSet-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-codec-1.15.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-collections4-4.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-compress-1.20.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-math3-3.6.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/curvesapi-1.06.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/gembox-spreadsheet.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-annotations-2.12.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-core-2.12.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-databind-2.12.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-8.0.25.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-examples-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-excelant-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-integration-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-ooxml-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-ooxml-full-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-ooxml-lite-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/poi-scratchpad-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/xmlbeans-4.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/executable/Execute1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/executable/Execute2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/model/School.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/repository/MemorySchoolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/repository/MysqlSchoolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/repository/SchoolRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/realHenryLover/repository/MysqlSchoolRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/SecondClassDB.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClassDB_book.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClassDB_coefficient.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClassDB_pricePerPy.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/SecondClassDB_school.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/ThirdClassDB_hiveData.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/ThridClassDB_city.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/akmu/ThridClassDB_personalEarnings.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testDataSet/thirdClassDBTlqkf.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HelpPlease/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HelpPlease/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HelpPlease/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/company/ExcelDownTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/company/ExcelReadTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/company/ExcelReadTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/company/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/company/repository/School.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/company/repository/Subject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/henrylover/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/out/production/untitled104/com/henrylover/model/School.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HelpPlease/untitled104.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1t8yZTC72AhdawElcl4nI6zZ4im" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testDataSet/akmu" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jwchu\Documents\codes\LifeBoat\testDataSet\akmu" />
+      <recent name="C:\Users\jwchu\Documents\codes\LifeBoat" />
+      <recent name="C:\Users\jwchu\Documents\codes\LifeBoat\src\main\java\com\realHenryLover\repository" />
+      <recent name="C:\Users\jwchu\Documents\codes\LifeBoat\src\main\java\com\realHenryLover\model" />
+      <recent name="C:\Users\jwchu\Documents\codes\LifeBoat\src\main\java\com\realHenryLover\executable" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.realHenryLover.repository" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Execute1">
+    <configuration name="Execute1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.realHenryLover.executable.Execute1" />
+      <module name="LifeBoat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.realHenryLover.executable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Execute2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.realHenryLover.executable.Execute2" />
+      <module name="LifeBoat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.realHenryLover.executable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MysqlSchoolRepositoryTest.addNewSchool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LifeBoat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.realHenryLover.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.realHenryLover.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.realHenryLover.repository.MysqlSchoolRepositoryTest" />
+      <option name="METHOD_NAME" value="addNewSchool" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Execute1" />
+        <item itemvalue="Application.Execute2" />
+        <item itemvalue="JUnit.MysqlSchoolRepositoryTest.addNewSchool" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0dbc5f7-e70e-49c9-b089-1aaecb95b21d" name="Default Changelist" comment="" />
+      <created>1622165067855</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622165067855</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
