@@ -30,7 +30,7 @@ public class Execute1 {
 
     /**
      * get data from _hiveData
-     * @return (학교, 학과 수)
+     * @return HashMap<학교, 학과 수>
      */
     private static Map<String, Integer> getSchoolNameAndSubject() {
         Map<String, Integer> returnValue = new LinkedHashMap<>();

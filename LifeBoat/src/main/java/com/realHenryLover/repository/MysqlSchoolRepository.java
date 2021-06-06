@@ -36,6 +36,8 @@ public class MysqlSchoolRepository implements SchoolRepository {
         long positionTeacher_female_number = school.getPositionTeacher_female_number();
         long schoolSize = school.getSchoolSize();
         long numberOfDepartment = school.getNumberOfDepartments();
+        long generalClass_number = school.getGeneralClass_number();
+        long specialClass_number = school.getSpecialClass_number();
         long regionalAverageIncome = school.getRegionalAverageIncome();
         long regionalPricePerPy = school.getRegionalPricePerPy();
         double regionalPriceMomentum = Math.round(school.getRegionalPriceMomentum() * 1000) / 1000.0;
@@ -47,8 +49,8 @@ public class MysqlSchoolRepository implements SchoolRepository {
         double enrollmentRate = Math.round(school.getEnrollmentRate() * 1000) / 1000.0;
 
         try {
-            statement.execute("INSERT INTO `fordatacompetition`.`schools` (`schoolName`, `schoolName_keyWord`, `students_number`, `students_female_number`, `students_moveOut_number`, `students_moveIn_number`, `generalTeacher_number`, `generalTeacher_female_number`, `positionTeacher_number`, `positionTeacher_female_number`, `schoolSize`, `numberOfDepartments`, `regionalAverageIncome`, `regionalPricePerPy`, `regionalPriceMomentum`, `book_total`, `book_yearlyUser`, `book_yearlyBook`, `employmentRate`, `enrollmentRate`)" +
-                    " VALUES('" + schoolName + "', '" + schoolName_keyWord + "', '" + students_number + "', '" + students_female_number + "', '" + students_moveOut_number + "', '" + students_moveIn_number + "', '" + generalTeacher_number + "', '" + generalTeacher_female_number + "', '" + positionTeacher_number + "', '" + positionTeacher_female_number + "', '" + schoolSize + "', '" + numberOfDepartment + "', '" + regionalAverageIncome + "', '" + regionalPricePerPy + "', '" + regionalPriceMomentum + "', '" + book_total + "', '" + book_yearlyUser + "', '" + book_yearlyBook + "', '" + employmentRate + "', '" + enrollmentRate + "');");
+            statement.execute("INSERT INTO `fordatacompetition`.`schools` (`schoolName`, `schoolName_keyWord`, `students_number`, `students_female_number`, `students_moveOut_number`, `students_moveIn_number`, `generalTeacher_number`, `generalTeacher_female_number`, `positionTeacher_number`, `positionTeacher_female_number`, `schoolSize`, `numberOfDepartments`, `generalClassNumber`, `specialClassNumber`, `regionalAverageIncome`, `regionalPricePerPy`, `regionalPriceMomentum`, `book_total`, `book_yearlyUser`, `book_yearlyBook`, `employmentRate`, `enrollmentRate`)" +
+                    " VALUES('" + schoolName + "', '" + schoolName_keyWord + "', '" + students_number + "', '" + students_female_number + "', '" + students_moveOut_number + "', '" + students_moveIn_number + "', '" + generalTeacher_number + "', '" + generalTeacher_female_number + "', '" + positionTeacher_number + "', '" + positionTeacher_female_number + "', '" + schoolSize + "', '" + numberOfDepartment + "', '" + generalClass_number + "', '" + specialClass_number + "', '" + regionalAverageIncome + "', '" + regionalPricePerPy + "', '" + regionalPriceMomentum + "', '" + book_total + "', '" + book_yearlyUser + "', '" + book_yearlyBook + "', '" + employmentRate + "', '" + enrollmentRate + "');");
             ResultSet set = statement.executeQuery("select `index` from `fordatacompetition`.`schools` where 'schoolName' = '" + schoolName + "';");
             if (set.next()) {
                 school.setIndex(set.getLong("id"));
