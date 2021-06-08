@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a0dbc5f7-e70e-49c9-b089-1aaecb95b21d" name="Default Changelist" comment="..">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realHenryLover/executable/Execute1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/executable/Execute1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realHenryLover/repository/MysqlSchoolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realHenryLover/repository/MysqlSchoolRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
